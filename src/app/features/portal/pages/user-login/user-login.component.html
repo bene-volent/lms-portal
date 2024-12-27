@@ -1,0 +1,55 @@
+<app-auth-page>
+    <div class="" style="display: grid;align-content: center;;gap: 3rem; padding: 1rem;">
+        <header style="text-align: center;">
+            <h1>Log In</h1>
+        </header>
+        <form (ngSubmit)="onSubmit()" [formGroup]="formData" style="display: grid;gap: 2rem;">
+            <p-floatLabel>
+                
+                <p-iconfield>
+                    <input id="login-id" pInputText formControlName="loginID" fluid/>
+                    <p-inputicon class="pi pi-user" />
+
+                </p-iconfield>
+                <label for="login-id">Username or Email Address</label>
+            </p-floatLabel>
+            <p-floatLabel>
+                    <p-password  inputId="password" formControlName="password"  [strongRegex]="strongValidation" [toggleMask]="true"  fluid >
+                        <ng-template #footer>
+                            <hr/>
+                            <ul class="pl-2 ml-2 my-0 leading-normal">
+                                <li>At least one lowercase</li>
+                                <li>At least one uppercase</li>
+                                <li>At least one numeric</li>
+                                <li>At least one symbol</li>
+                                <li>Minimum 8 characters</li>
+                            </ul>
+                        </ng-template>
+                    </p-password>
+                    <label for="password">Password</label>
+            </p-floatLabel>
+            
+            <div style="display: flex;gap: 1rem;flex-direction: column;">
+                <p-button type="submit"  fluid label="Submit" />
+                <div style="display: flex;justify-content: space-between;">
+                    <p-button  [link]="true" label="Register" routerLink="/register"/>
+                    <p-button  [link]="true" label="Forgot Password?" (onClick)="forgotPasswordModalvisible = true"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</app-auth-page>
+
+<p-dialog header="Forgot Password" [modal]="true" [(visible)]="forgotPasswordModalvisible" [style]="{ width: '25rem' }">
+    <span class="p-text-secondary" style="display: block; margin-bottom: 1rem;">Enter your email to reset your password.</span>
+    <form (ngSubmit)="onForgotPassword()">
+        <div class="flex" style="margin-bottom: 1rem;">
+            <label for="email" style="font-weight: bold; width: 6rem;">Email</label>
+            <input pInputText id="email" class="flex-auto" style="padding: 0.5rem; width: 100%;" autocomplete="off" [formControl]="forgotPasswordEmail" />
+        </div>
+        <div class="flex justify-end" style="display: flex; justify-content: flex-end; gap: 0.5rem;">
+            <p-button label="Cancel" severity="secondary" (click)="forgotPasswordModalvisible = false" />
+            <p-button label="Submit" />
+        </div>
+    </form>
+</p-dialog>

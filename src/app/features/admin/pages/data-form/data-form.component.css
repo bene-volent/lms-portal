@@ -1,0 +1,107 @@
+.edit-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.form-control {
+    width: 100%;
+    padding-block: 1rem;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+
+    @media screen and (max-width: 1024px) {
+        flex-direction: column;
+    }
+
+    label {
+        display: block;
+        padding: 4px 10px 0 0;
+        min-width: 160px;
+        width: 160px;
+        word-wrap: break-word;
+        font-size: 1rem;
+
+        @media screen and (max-width: 1024px) {
+            padding-top: 6px;
+            font-size: 0.875rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            width: 100%;
+            min-width: auto;
+        }
+    }
+
+    .input {
+        padding: 5px 6px !important;
+        margin-top: 0 !important;
+        min-width: 20rem;
+
+        @media screen and (max-width: 1024px) {
+            margin: 0 !important;
+            padding: 6px 8px !important;
+            min-height: 2.25rem !important;
+            font-size: 1rem !important;
+            min-width: 100%;
+        }
+    }
+
+    .textarea {
+        width: 48rem;
+        height: 10rem;
+
+        @media screen and (max-width: 1024px) {
+            width: 100%;
+            height: 7rem;
+        }
+    }
+}
+
+.submit-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    @media screen and (max-width: 576px) {
+        flex-direction: column;
+
+        > * {
+            flex-grow: 1;
+        }
+    }
+}
+
+/* Additional utility classes for the form component */
+.form-invalid {
+    border-color: #dc3545;
+}
+
+.form-required::after {
+    content: "*";
+    color: #dc3545;
+    margin-left: 4px;
+}
+
+/* Adding some spacing for the delete button in edit mode */
+.edit-header p-button {
+    margin-left: 1rem;
+}
+
+/* Improve visibility of validation states */
+:host ::ng-deep {
+    .ng-invalid.ng-touched .input {
+        border-color: #dc3545;
+    }
+
+    .ng-valid.ng-touched .input {
+        border-color: #198754;
+    }
+
+    /* Style for disabled inputs */
+    .p-disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}

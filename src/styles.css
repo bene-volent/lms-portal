@@ -1,1 +1,166 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/primeicons/primeicons.css";
+
+@layer reset, main, primeng;
+
+@layer reset {
+
+    html,
+    body {
+        height: 100%;
+    }
+
+    body {
+        margin: 0;
+        font-family: var(--font-family);
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    * {
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    img,
+    picture,
+    video,
+    canvas,
+    svg {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    textarea,
+    select {
+        font: inherit;
+    }
+
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        overflow-wrap: break-word;
+    }
+
+    p {
+        text-wrap: pretty;
+        margin: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        text-wrap: balance;
+    }
+
+    #root,
+    #__next {
+        isolation: isolate;
+    }
+}
+
+@layer main {
+    :root {
+        --primary-color: #5684df;
+        --secondary-color: #fff;
+        --neutral-color: transparent;
+        --text-color: #001760;
+        --background-color: #e5efff;
+    }
+
+    body {
+        font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol;
+        /* background-color: var(--background-color); */
+    }
+
+    .menu-button {
+        display: none !important;
+        font-size: 1.5rem;
+        cursor: pointer;
+
+        height: 100%;
+
+        @media screen and (max-width: 768px) {
+            display: block !important;
+
+        }
+    }
+
+    .sidebar {
+        position: sticky;
+        inset-inline-start: 0;
+        top: 0rem;
+        height: 100dvh;
+        -webkit-user-select: none;
+        user-select: none;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        flex: 0 0 250px;
+        overflow: auto;
+        background-color: #fff;
+        border-right: 1px solid #44444444;
+
+        @media screen and (max-width: 768px) {
+            position: fixed;
+            z-index: 1103;
+            transform: translateX(-100%);
+            opacity: 0;
+
+            border-right: none;
+        
+            width: min(calc(100% - 50px),350px);
+            transition: transform .4s cubic-bezier(.05, .74, .2, .99), opacity .3s;
+            
+            &.active{
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    }
+
+
+    .menu-styles{
+        transform: translateX(-250px);
+        
+        @media screen and (max-width: 768px){
+            transform: translateX(0);
+            
+        }
+    }
+
+    .container {
+        padding-inline: 4rem;
+
+        @media (max-width:768px) {
+            padding-inline: 2rem;
+        }
+
+        @media (max-width:576px) {
+            padding-inline: 1rem;
+        }
+    }
+
+
+    @media screen and (max-width: 400px) {
+        .table-item-controls .p-button-label {
+            display: none!important;
+        }
+        
+    }
+}

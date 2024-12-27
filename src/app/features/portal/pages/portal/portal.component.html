@@ -1,0 +1,39 @@
+<div class="" style="max-width: 1150px;margin-inline: auto;display: flex;flex-direction: column;gap: 3rem;">
+    <p-carousel #car [value]="slides" [numVisible]="1" [numScroll]="1" circular [showNavigators]="false"
+        [autoplayInterval]="5000">
+        <ng-template let-slide pTemplate="slide">
+            <img [src]="slide.image" (mouseenter)="car.stopAutoplay()" (mouseleave)="car.startAutoplay()"
+                alt="slide.image" style="width:100%;max-width: 100%;margin-inline:auto;border-radius: 0.25rem;" />
+        </ng-template>
+
+    </p-carousel>
+
+    @for (section of sections; track section.title) {
+    <app-card-section [title]="section.title">
+        @for (topic of section.topics; track topic.id) {
+        <p-card [style]="{overflow:'hidden'}">
+            <ng-template #header>
+                <img [src]="topic.thumbnail" [alt]="topic.subject" style="width:100%;" />
+            </ng-template>
+            <ng-template #title>
+                {{topic.subject}}
+            </ng-template>
+            <ng-template #subtitle>
+                {{topic.topic}}
+            </ng-template>
+            <p>
+                {{topic.description}}
+            </p>
+            <ng-template #footer>
+                <div>
+                    <p-button [disabled]="topic.isEnrolled" [style]="{padding:'0.25rem .5rem'}" link
+                        [label]="!topic.isEnrolled?'Enroll':'Enrolled'" />
+                    <p-button [style]="{padding:'0.25rem .5rem'}" link label="Details" (onClick)="openSubjectModal(topic)" />
+                </div>
+            </ng-template>
+        </p-card>
+        }
+    </app-card-section>
+    }
+</div>
+<app-subject-modal [(visible)]="detailsSubjectVisible" [data]="dataToShow" />

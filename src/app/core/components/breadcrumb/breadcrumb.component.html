@@ -1,0 +1,12 @@
+<div class="breadcrumbs container" style="margin-bottom: 1rem;">
+    @let breadcrumbs = getBreadcrumbs() | async;
+    <p-breadcrumb  styleClass="breadcrumbs-container breadcrumbs" [model]="breadcrumbs!" [home]="{icon: 'pi pi-home', url: '/'}">
+        <ng-template #item let-item>
+                <a [routerLink]="item.url" class="p-breadcrumb-item-link breadcrumbs-item">
+                    <span [ngClass]="[item.icon ? item.icon : '']"></span>
+                    <span>{{ item.label }}</span>
+                </a>
+            
+        </ng-template>
+    </p-breadcrumb>
+</div>

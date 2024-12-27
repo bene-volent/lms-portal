@@ -1,0 +1,59 @@
+<header class="edit-header">
+    <h2>{{ table.name | titlecase}}</h2>
+    @if (isEditMode) {
+      <p-button label="Delete" icon="pi pi-trash" severity="danger" 
+        variant="outlined" raised iconPos="left"
+        (onClick)="deleteSelected()">
+      </p-button>
+    }
+  </header>
+
+  <form (ngSubmit)="submitForm()" [formGroup]="form!">
+    @for (attr of table.attrs; track $index) {
+      <div class="form-control">
+        <label [htmlFor]="attr"
+          [style]="{fontWeight:table.required[$index]?700:400}">
+          {{table.attrsFull[$index]}}
+        </label>
+
+        @if (table.types[$index] === 'integer') {
+          <p-inputnumber inputStyleClass="input" [id]="attr" [formControlName]="attr" />
+        } @else if (table.types[$index] === 'numeric') {
+          <p-inputnumber inputStyleClass="input" mode="decimal" [id]="attr" [formControlName]="attr" />
+        } @else if (table.types[$index] === 'text') {
+          <textarea class="textarea input" pInputTextarea [id]="attr" [formControlName]="attr"></textarea>
+        } @else if (table.types[$index] === 'date') {
+          <p-datepicker dateFormat="dd/mm/yy" inputStyleClass="input" [id]="attr" 
+            [showIcon]="true" iconDisplay="input" [formControlName]="attr">
+          </p-datepicker>
+        } @else if (table.types[$index] === 'timestampz') {
+          <p-datepicker [showTime]="true" hourFormat="12" inputStyleClass="input" 
+            [showIcon]="true" iconDisplay="input" [id]="attr" [formControlName]="attr">
+          </p-datepicker>
+        } @else if (table.types[$index] === 'boolean') {
+          <p-checkbox [id]="attr" [formControlName]="attr"></p-checkbox>
+        } @else if (table.types[$index] === 'money') {
+          <p-inputnumber inputStyleClass="input" mode="currency" currency="USD" 
+            [id]="attr" [formControlName]="attr" />
+        } @else if (table.types[$index] === 'bytea') {
+          <p-fileupload mode="basic" chooseLabel="Choose" chooseIcon="pi pi-upload" 
+            accept="image/*" maxFileSize="1000000" [id]="attr" [customUpload]="true" 
+            (uploadHandler)="onUpload(attr,$event)" [auto]="true" [fileLimit]="1">
+          </p-fileupload>
+        } @else {
+          <input type="text" class="input" pInputText [id]="attr" [formControlName]="attr" />
+        }
+      </div>
+    }
+    <div class="submit-buttons">
+      <p-button label="Save" [style]="{'width': '100%'}" type="submit" 
+        (onClick)="setAction('save')" raised>
+      </p-button>
+      <p-button label="Save and Add" [style]="{'width': '100%'}" type="submit" 
+        (onClick)="setAction('saveAndAdd')">
+      </p-button>
+      <p-button label="Save and Continue Editing" [style]="{'width': '100%'}" 
+        type="submit" (onClick)="setAction('saveAndEdit')">
+      </p-button>
+    </div>
+  </form>

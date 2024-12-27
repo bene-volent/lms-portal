@@ -1,0 +1,67 @@
+<header class="admin-header">
+    <h2>{{tableName | titlecase}} Table</h2>
+    <p-button label="Add New" routerLink="add" icon="pi pi-plus" severity="contrast" variant="outlined" raised
+        iconPos="left"></p-button>
+</header>
+
+@if(table) {
+<p-table #dt [value]="tableData" [columns]="table!.attributes" [loading]="loading" [paginator]="true" [rows]="10"
+    [rowsPerPageOptions]="[10, 25, 50]" [scrollable]="true" scrollHeight="100%" scrollWidth="100%"
+    [tableStyle]="{'min-width':'500px'}" currentPageReportTemplate="{first} to {last} of {totalRecords}"
+    [showCurrentPageReport]="true" [(selection)]="selectedRows" [dataKey]="table!.attributes[0]"
+    (onPage)="onPageHandler($event)"
+    >
+    <ng-template #caption>
+        <div class="table-top-container" >
+            <p-button label="Delete" icon="pi pi-trash" severity="danger" variant="outlined" raised iconPos="left"
+                (onClick)="deleteSelected()"></p-button>
+            <p-iconfield iconPosition="left" class="ml-auto">
+                <p-inputicon>
+                    <i class="pi pi-search"></i>
+                </p-inputicon>
+                <input pInputText type="text" (input)="dt.filterGlobal(getValueFromField($event.target), 'contains')"
+                    placeholder="Search keyword" />
+            </p-iconfield>
+        </div>
+    </ng-template>
+    <ng-template #header let-columns>
+        <tr>
+            <th style="width: 4rem"><p-tableHeaderCheckbox /></th>
+            @for (attr of columns; track $index) {
+            <th [pSortableColumn]="attr">{{attr | titlecase}}{{table!.required[$index]?'*':''}}&nbsp;
+                <p-sortIcon [field]="attr"></p-sortIcon>
+            </th>
+
+            }
+
+        </tr>
+    </ng-template>
+    <ng-template #body let-rowData let-columns="columns">
+        <tr>
+            <td>
+                <p-tableCheckbox [value]="rowData" />
+            </td>
+            @for (attr of columns; track $index) {
+            <td>
+                @if (attr.includes('id') && $index === 0) {
+                <a [routerLink]="['/admin',tableName,rowData.id,'edit']" style="color:#145ba3;text-decoration: underline;">{{rowData[attr]}}</a>
+                }
+                @else {
+                {{rowData[attr]}}
+                }
+            </td>
+            }
+
+        </tr>
+    </ng-template>
+    <ng-template #emptymessage let-columns>
+        <tr>
+            <td [attr.colspan]="columns.length">
+                No records found
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+}
+
+<router-outlet></router-outlet>

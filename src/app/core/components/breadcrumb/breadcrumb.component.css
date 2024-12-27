@@ -1,0 +1,34 @@
+.breadcrumbs{
+    border-block: 1px solid #c8c9ca;
+    background-color: #e2e8f0!important;
+}
+.breadcrumbs-container{
+    padding: 0.5rem 1rem !important;
+    overflow: auto;
+
+
+    @media screen and (max-width: 768px){
+        padding: 0.5rem 0.85rem !important;
+    }
+
+    @media screen and (max-width: 576px){
+        padding: 0.5rem 0.5rem !important;
+    }
+}
+
+.breadcrumbs-item{
+    display: inline-block !important;
+    color: #2d3748 !important;
+    text-decoration: none !important;
+    transition: color 0.3s !important;
+    cursor: pointer !important;
+
+    &:hover{
+        color: #2b6cb0 !important;
+    }
+
+    @media screen and (max-width: 768px){
+        font-size: 0.85rem !important;
+                
+    }
+}

@@ -1,0 +1,29 @@
+<p-dialog
+    [header]="data?.subject"
+    [modal]="true"
+    [(visible)]="visible"
+    [style]="{width: '35rem'}"
+    [breakpoints]="{ '1199px': '40vw', '575px': '45vw' }"
+    >
+
+    <div class="subject-modal-content">
+        <img [src]="data?.thumbnail" [alt]="data?.subject" style="width:100%;max-width:500px;height: auto;margin-inline:auto;border-radius: 0.25rem;" />
+        <h3>{{data?.topic}}</h3>
+        <p>{{data?.description}}</p>
+        <h3>Details</h3>
+        <p>{{data?.detailedDescription}}</p>
+        <h3>Status</h3>
+        <p>{{ data?.isEnrolled ? 'Enrolled' : 'Not Enrolled' }}</p>
+    </div>
+    <ng-template #footer>
+        <p-button
+                label="Cancel"
+                [text]="true"
+                severity="secondary"
+                (click)="hideDialog()" />
+            <p-button
+                label="Save"
+                (click)="hideDialog()"
+              />
+    </ng-template>
+</p-dialog>

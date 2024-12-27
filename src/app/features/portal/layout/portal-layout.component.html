@@ -1,0 +1,32 @@
+<app-main-layout>
+    <div sidebar>
+        <div class="sidebar-header">
+            <h2>Portal</h2>
+            <p>Sub Title</p>
+        </div>
+        <nav>
+            <ul>
+                <li class="sidebar-item">
+                    
+                    <p-button link routerLink="/" styleClass="sidebar-item-button">Sidebar Item 1</p-button>
+                </li>
+                <li class="sidebar-item">
+                    <p-button link routerLink="/" styleClass="sidebar-item-button">Sidebar Item 2</p-button>
+                </li>
+                <li class="sidebar-item">
+                    <p-button link routerLink="/" styleClass="sidebar-item-button">Sidebar Item 3</p-button>
+                </li>
+                <li class="sidebar-item">
+                    <p-button link routerLink="/" styleClass="sidebar-item-button">Sidebar Item 4</p-button>
+                </li>
+                <li class="sidebar-item">
+                    <p-button link routerLink="/" styleClass="sidebar-item-button">Sidebar Item 5</p-button>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <main main class="container">
+        <router-outlet></router-outlet>
+    </main>
+    
+</app-main-layout>

@@ -1,0 +1,53 @@
+<app-auth-page form-height="min(85dvh,800px)" form-width="35rem">
+    <div class="" style="padding: min(1vw,1rem);">
+        <header style="text-align: center;margin-bottom: 0.5rem;">
+            <h1>Register</h1>
+            <p-button [link]="true" label="Back to Login?" routerLink="/login" />
+        </header>
+        <form (ngSubmit)="onSubmit()" [formGroup]="formData" style="display: grid;gap: 2rem;">
+                    <p-floatlabel>
+                        <input type="text" id="username" pInputText formControlName="username" fluid />
+                        <label for="username">Username</label>
+                    </p-floatlabel> 
+                    <p-floatlabel>
+                        <input type="text" id="fname" pInputText formControlName="fname" fluid />
+                        <label for="fname">First Name</label>
+                    </p-floatlabel>
+                    <p-floatlabel>
+                        <input type="text" id="lname" pInputText formControlName="lname" fluid />
+                        <label for="lname">Last Name</label>
+                    </p-floatlabel>
+            
+                    <p-floatlabel>
+                        <input type="email" id="email" pInputText formControlName="email" fluid />
+                        <label for="email">Email</label>
+                    </p-floatlabel>
+                    <p-floatlabel >
+                        <input type="tel" id="phone" pInputText formControlName="mobile" fluid />
+                        <label for="phone">Phone</label>
+                    </p-floatlabel>
+                <div formGroupName="passwords">
+                    <p-floatlabel>
+                        <p-password inputId="password"  formControlName="password" [strongRegex]="strongValidation" [toggleMask]="true" fluid >
+                            <ng-template #footer>
+                                <hr/>
+                                <ul class="pl-2 ml-2 my-0 leading-normal">
+                                    <li>At least one lowercase</li>
+                                    <li>At least one uppercase</li>
+                                    <li>At least one numeric</li>
+                                    <li>At least one symbol</li>
+                                    <li>Minimum 8 characters</li>
+                                </ul>
+                            </ng-template>
+                        </p-password>
+                        <label for="password">Password</label>
+                    </p-floatlabel>
+                    <p-floatlabel style="margin-top: 2rem;">
+                        <p-password inputId="confirmPassword"  formControlName="confirmPassword" [feedback]="false"  fluid />
+                        <label for="confirmPassword">Confirm Password</label>
+                    </p-floatlabel>
+                </div>
+            <p-button type="submit" label="Submit" fluid />
+        </form>
+    </div>
+</app-auth-page>

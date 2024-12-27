@@ -1,0 +1,13 @@
+.footer{
+    height: 4rem;
+    margin-block: 1rem;
+    border-top: 1px solid #e2e8f0;
+    padding-block: 2rem 1rem;
+    
+}
+
+.footer-inner{
+    display: grid;
+    place-content: center;
+    
+}

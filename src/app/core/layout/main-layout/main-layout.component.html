@@ -1,0 +1,24 @@
+<div class="main-layout">
+    <div class="layout-mask" [ngClass]="{'layout-mask-active':isMenuActive()}" (click)="hideMenu()"></div>    
+
+    @if (sidebarRequired){
+        <app-menubar>
+            <ng-content select="[sidebar]"></ng-content>
+        </app-menubar>
+    }
+    <div class="main-content">
+        <app-header [sidebar-required]="sidebarRequired"/>
+        <app-breadcrumb></app-breadcrumb>
+        <ng-content select="[main]">
+            <main main class="container">
+                Empty Layout
+            </main>
+        </ng-content>
+        <app-footer></app-footer>
+    </div>
+</div>
+
+
+
+
+<p-scrolltop />
