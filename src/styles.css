@@ -81,6 +81,8 @@
         --neutral-color: transparent;
         --text-color: #001760;
         --background-color: #e5efff;
+
+        /* Additional Styles for primeng variables*/
     }
 
     body {
@@ -123,11 +125,11 @@
             opacity: 0;
 
             border-right: none;
-        
-            width: min(calc(100% - 50px),350px);
+
+            width: min(calc(100% - 50px), 350px);
             transition: transform .4s cubic-bezier(.05, .74, .2, .99), opacity .3s;
-            
-            &.active{
+
+            &.active {
                 transform: translateX(0);
                 opacity: 1;
             }
@@ -135,12 +137,12 @@
     }
 
 
-    .menu-styles{
+    .menu-styles {
         transform: translateX(-250px);
-        
-        @media screen and (max-width: 768px){
+        top:auto !important;
+        @media screen and (max-width: 768px) {
             transform: translateX(0);
-            
+
         }
     }
 
@@ -159,8 +161,15 @@
 
     @media screen and (max-width: 400px) {
         .table-item-controls .p-button-label {
-            display: none!important;
+            display: none !important;
         }
-        
+
     }
+}
+
+
+/* Additional Styles for primeng components */
+:root {
+    --p-toast-width: min(25rem, 100%) !important; /* If this doesnt work, go to app.component.html, use inline-styling by using attr style*/
+
 }

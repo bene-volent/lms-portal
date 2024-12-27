@@ -20,7 +20,7 @@
                 <a [routerLink]="[currentPage === 'Admin'?'/admin':'/']">
                     <span class="header-title">{{getName()}} </span>
                     @if (user?.role !== 'user') {
-                    <span class="header-page-type">({{currentPage}})</span>
+                    <span class="header-title header-page-type">({{currentPage}})</span>
                     }
                 </a>
 
