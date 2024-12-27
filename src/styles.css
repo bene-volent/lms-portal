@@ -126,7 +126,7 @@
 
             border-right: none;
 
-            width: min(calc(100% - 50px), 350px);
+            width: min(calc(100% - 85px), 350px);
             transition: transform .4s cubic-bezier(.05, .74, .2, .99), opacity .3s;
 
             &.active {
