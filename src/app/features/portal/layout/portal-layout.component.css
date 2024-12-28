@@ -1,18 +1,19 @@
 [sidebar] {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.5rem;    
 
     padding: 1rem;
 
+    
     ul {
         list-style: none;
         padding: 0;
     }
 
     ul li {
-        padding-block: 0.5rem;
-        margin-bottom: 0.5rem 0;
+        padding-block: 0.15rem;
+        /* margin-bottom: 0.5rem 0; */
 
 
     }
@@ -33,11 +34,9 @@
     transition: background-color 0.3s ease;
     z-index: 2;
 
-    border-bottom: 1px solid #444;
 
     &:first-child {
 
-        border-top: 1px solid #444;
         /* margin-top: 0.5rem; */
     }
 
@@ -67,7 +66,9 @@
     border-radius: 0.6rem;
 }
 
-
+.sidebar-item-active button{
+    background-color: hsl(0 0 0% / 0.15) !important;
+}
 
 .sidebar-item-button {
     width: 100%;
@@ -75,6 +76,7 @@
     justify-content: flex-start !important;
 
     &:hover {
-        background-color: #ddd !important;
+        background-color: hsl(0 0 0% / 0.1) !important;
+        text-decoration: underline;
     }
 }

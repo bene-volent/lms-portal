@@ -19,6 +19,9 @@ import { TextareaModule } from 'primeng/textarea';
 import { DatePickerModule } from 'primeng/datepicker';
 import { CheckboxModule } from 'primeng/checkbox';
 import { FileUploadModule } from 'primeng/fileupload';
+import { AccordionModule } from 'primeng/accordion';
+import { PanelModule} from 'primeng/panel'
+import { Divider} from 'primeng/divider'
 
 @NgModule({
   declarations: [],
@@ -40,7 +43,10 @@ import { FileUploadModule } from 'primeng/fileupload';
     TextareaModule,
     DatePickerModule,
     CheckboxModule,
-    FileUploadModule
+    FileUploadModule,
+    AccordionModule,
+    PanelModule,
+    Divider
   ],
   exports:[
     ButtonModule,
@@ -60,7 +66,9 @@ import { FileUploadModule } from 'primeng/fileupload';
     TextareaModule,
     DatePickerModule,
     CheckboxModule,
-    FileUploadModule
+    FileUploadModule,
+    AccordionModule,PanelModule,
+    Divider
   ]
 })
 export class PrimeNGModule { }

@@ -27,8 +27,10 @@
             </h1>
 
         </div>
-        <div class="header-options" #optionsContainer>
-            <p-menu #menu popup [model]="userButtonOptions" [appendTo]="optionsContainer"
+
+        <div class="header-options" >
+            <app-notifications/>
+            <p-menu #menu popup [model]="userButtonOptions" [appendTo]="optionButton"
                 [styleClass]="sidebarRequired?'menu-styles':''">
                 <ng-template #start>
                     <p style="font-size: 1.2rem;font-weight: bold;padding: 1rem 1rem 0;">Options</p>
@@ -38,7 +40,7 @@
                         [icon]="item.icon" (onClick)="item.onClick()" />
                 </ng-template>
             </p-menu>
-            <p-button styleClass="header-button" [label]="user?.firstName" icon="pi pi-angle-down" iconPos="right"
+            <p-button #optionButton styleClass="header-button" [label]="user?.firstName" icon="pi pi-angle-down" iconPos="right"
                 (onClick)="menu.toggle($event)" />
         </div>
     </div>

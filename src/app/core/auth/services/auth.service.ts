@@ -34,6 +34,8 @@ export class AuthService {
   private currentUserSubject: BehaviorSubject<User | null>;
   public currentUser$: Observable<User | null>;
 
+  public userID: number|null = null;
+
   constructor(private httpClient: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<User | null>(null);
     this.currentUser$ = this.currentUserSubject.asObservable();
@@ -74,7 +76,9 @@ export class AuthService {
       return new Observable<User>(observer => {
         setTimeout(() => {
           this.saveUserToLocalStorage(DUMMY_USER);
+          this.userID = DUMMY_USER.id;
           observer.next(DUMMY_USER);
+
         }, 2000);
       }).pipe(
         map(user => {
@@ -90,6 +94,7 @@ export class AuthService {
       return new Observable<User>(observer => {
         setTimeout(() => {
           this.saveUserToLocalStorage(DUMMY_ADMIN);
+          this.userID = DUMMY_ADMIN.id;
           observer.next(DUMMY_ADMIN);
         }, 2000);
       }).pipe(
@@ -127,6 +132,18 @@ export class AuthService {
 
   logout() {
     this.currentUserSubject.next(null);
+    this.userID = null;
+    // remove user from local storage
+    
+    let data = localStorage.getItem('lms-portal-config');
+
+    if (data) {
+      let parsedData = JSON.parse(data);
+      delete parsedData.user;
+      localStorage.setItem('lms-portal-config', JSON.stringify(parsedData));
+    }
+    
+
   }
 
   registerUser(creds: RegisterCredentials): Observable<User> {

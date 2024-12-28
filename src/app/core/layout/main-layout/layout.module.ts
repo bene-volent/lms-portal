@@ -9,6 +9,9 @@ import { MenuModule } from 'primeng/menu';
 import { BreadcrumbComponent } from '@core/components/breadcrumb/breadcrumb.component';
 import {BreadcrumbModule} from 'primeng/breadcrumb';
 import { ScrollTopModule} from 'primeng/scrolltop'
+import { BadgeModule } from 'primeng/badge';
+import { NotificationsComponent } from '@core/components/notifications/notifications.component';
+
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -16,6 +19,7 @@ import { ScrollTopModule} from 'primeng/scrolltop'
     MenubarComponent,
     MainLayoutComponent,
     BreadcrumbComponent,
+    NotificationsComponent
 
   ],
   imports: [
@@ -24,7 +28,8 @@ import { ScrollTopModule} from 'primeng/scrolltop'
     MenuModule,
     RouterModule,
     BreadcrumbModule,
-    ScrollTopModule
+    ScrollTopModule,
+    BadgeModule
 
   ],
   exports:[

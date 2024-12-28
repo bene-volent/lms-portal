@@ -105,5 +105,14 @@ header{
     gap: 1rem;
 }
 
+.header-options{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    @media screen and (max-width: 576px){
+        gap: 0.5rem;;
+    }
+}
 
 /* Menu button is in global styles.css */

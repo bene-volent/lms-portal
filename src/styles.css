@@ -139,7 +139,7 @@
 
     .menu-styles {
         transform: translateX(-250px);
-        top:auto !important;
+        top:100% !important;
         @media screen and (max-width: 768px) {
             transform: translateX(0);
 
