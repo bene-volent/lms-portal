@@ -11,7 +11,8 @@ import {BreadcrumbModule} from 'primeng/breadcrumb';
 import { ScrollTopModule} from 'primeng/scrolltop'
 import { BadgeModule } from 'primeng/badge';
 import { NotificationsComponent } from '@core/components/notifications/notifications.component';
-
+import {ProgressSpinnerModule} from "primeng/progressspinner"
+import { TimeAgoPipe } from '@core/pipe/time-ago.pipe';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -19,7 +20,8 @@ import { NotificationsComponent } from '@core/components/notifications/notificat
     MenubarComponent,
     MainLayoutComponent,
     BreadcrumbComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    TimeAgoPipe
 
   ],
   imports: [
@@ -29,7 +31,8 @@ import { NotificationsComponent } from '@core/components/notifications/notificat
     RouterModule,
     BreadcrumbModule,
     ScrollTopModule,
-    BadgeModule
+    BadgeModule,
+    ProgressSpinnerModule,
 
   ],
   exports:[

@@ -138,11 +138,20 @@
 
 
     .menu-styles {
-        transform: translateX(-250px);
+        translate: -250px 0 !important; 
         top:100% !important;
         @media screen and (max-width: 768px) {
-            transform: translateX(0);
+            translate: 0 0 !important;
+        }
+    }
 
+    .notification-menu{
+        min-width: 20rem !important;
+        max-width: 30rem !important;
+        transform-origin: center top;   
+
+        @media screen and (max-width: 576px) {
+            min-width: min(80%,30rem) !important;
         }
     }
 
@@ -164,6 +173,18 @@
             display: none !important;
         }
 
+    }
+
+    svg text{
+        font-size:1rem;
+
+        @media screen and (max-width: 768px) {
+            font-size:1.5rem;
+        }
+
+        @media screen and (max-width: 576px) {
+            font-size:2rem;
+        }
     }
 }
 

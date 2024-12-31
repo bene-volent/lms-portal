@@ -1,0 +1,57 @@
+.notification-item{
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #d4d9e0;
+    
+    display: flex;
+    cursor: pointer;
+
+    &:not(.read){
+        background-color: #eef3f8;
+
+        .notification-heading{
+            font-weight: 600;
+        }
+    }
+
+    & .notification-thumbnail{
+        padding:0.25rem;
+        border-radius: 50%;
+        
+        height:50px;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+    }
+
+    & .notification-content{
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.25rem;
+    }
+
+    & .notification-heading{
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+
+    & .notification-time{
+        font-size: 0.75rem;
+        color: #6c757d;
+    }
+
+    & .notification-message{
+        font-size: 0.85rem;
+        color: #6c757d;
+        /* add word clipping after 40ch */
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        width: 40ch;
+
+
+    }
+
+}

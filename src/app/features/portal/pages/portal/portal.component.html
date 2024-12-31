@@ -1,12 +1,14 @@
 <div class="" style="max-width: 1150px;margin-inline: auto;display: flex;flex-direction: column;gap: 3rem;">
-    <p-carousel #car [value]="slides" [numVisible]="1" [numScroll]="1" circular [showNavigators]="false"
+    <!-- <p-carousel #car [value]="slides" [numVisible]="1" [numScroll]="1" circular [showNavigators]="false"
         [autoplayInterval]="5000">
         <ng-template let-slide pTemplate="slide">
             <img [src]="slide.image" (mouseenter)="car.stopAutoplay()" (mouseleave)="car.startAutoplay()"
                 alt="slide.image" style="width:100%;max-width: 100%;margin-inline:auto;border-radius: 0.25rem;" />
         </ng-template>
 
-    </p-carousel>
+    </p-carousel> -->
+
+    <app-progress-track trackPath="M 120,62 c -15.72482,-3.959857 375.26758,-15.668005 552.28605,10.95859 46.88099,7.0517 47.48994,133.524132 0,135.264692 -205.5131,7.53228 -364.28767,-27.99648 -532.11264,0 -44.537018,7.42964 -45.32744,124.21609 0,130.25589 236.58165,31.52399 578.18567,-4.61354 561.40205,6.06799"/>
 
     @for (section of sections; track section.title) {
     <app-card-section [title]="section.title">

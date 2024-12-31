@@ -1,0 +1,92 @@
+<div class="progress-bar-cont">
+
+    <h2>Current Course Progress</h2>
+
+    <div class="progress-bar-container">
+        <div class="progress-bar" [style.width.%]="progress"></div>
+        <div class="markers">
+            <ng-container *ngFor="let marker of [].constructor(maxDivisions + 1); let i = index">
+                <div class="marker" [style.left.%]="(i / (maxDivisions  )) * 100">
+                    <div class="tooltip hidden">
+                        {{ (i / maxDivisions) * 100 }}%
+                    </div>
+                </div>
+            </ng-container>
+            <div class="marker" [style.left.%]="progress" style="background-color: #333; height: 150%;transform: translateY(-12.5%);">
+                <div class="tooltip" style="background-color: #8a8a8a ; font-size: 1rem; top: -2rem; z-index: 1011;">
+                    {{ progress }}%
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .progress-bar-container {
+        margin-top: 2rem;
+        position: relative;
+        width: 100%;
+        height: 30px;
+        background-color: #bebebe;
+        border-radius: 5px;
+        border-block: 2px solid black;
+
+    }
+
+    .progress-bar {
+        height: 100%;
+        background-color: #fffb00;
+        border-radius: 5px 0 0 5px;
+
+    }
+
+    .markers {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+
+    .marker {
+        position: absolute;
+        top: 0;
+        translate: -50% 0;
+        height: 100%;
+        width: 2px;
+        z-index: 1001;
+        /* border-radius: 100vh; */
+        background-color: #000;
+
+        cursor: pointer;
+
+        &:hover .tooltip {
+            background-color: aqua;
+            scale: 1;
+        }
+
+
+    }
+
+    .tooltip {
+        position: absolute;
+        top: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #333;
+        color: #fff;
+        padding: 2px 5px;
+        border-radius: 3px;
+        font-size: 12px;
+        white-space: nowrap;
+        transition: transform 0.3s;
+
+        &.hidden {
+            transform: translateX(-50%) translateY(10px);
+            scale: 0;
+        }
+
+    }
+</style>

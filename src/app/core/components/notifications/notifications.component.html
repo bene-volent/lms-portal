@@ -1,3 +1,39 @@
 <div class="notification-container">
-    <p-button icon="pi pi-bell" [rounded]="true" [outlined]="true" />
+    <p-button icon="pi pi-bell" #noticationButton [rounded]="true" (onClick)="toggleMenu(menu,$event)"
+        [outlined]="true" />
+    <p-menu #menu [model]="notifications.notifications" [appendTo]="noticationButton" [popup]="true"
+        [styleClass]="'menu-styles notification-menu'" [style]="">
+
+        <ng-template #start>
+            <div style="display:flex;flex-direction:column;align-items:stretch;text-align: center;">
+                <p
+                    style="font-size: 1.2rem;font-weight: bold;padding: 0.25rem 1rem;text-align: center;border-bottom: 1px solid #9e9a9a ;">
+                    Notifications</p>
+                @if (loading) {
+                <p-progress-spinner animationDuration="1s" [style]="{width:'40px',height:'40px',marginBlock:'0.5rem'}"
+                    strokeWidth="5" fill="transparent" />
+                }
+            </div>
+        </ng-template>
+        <ng-template #item let-item>
+
+            <div class="notification-item" [routerLink]="item.link" [class.read]="item.isRead">
+                @if (item.thumnbail) {
+                    <img class="notification-thumbnail" [src]="item.thumbnail" alt="Thumbnail"/>
+                }
+                <div class="notification-content">
+                    <div class="notification-heading">
+                        <p class="notification-title">{{ item.notificationTitle }}</p>
+                        <p class="notification-time">{{ item.time | timeAgo}}</p>
+                    </div>
+                    <p class="notification-message">{{ item.message }}</p>
+                </div>
+
+            </div>
+
+        </ng-template>
+        <ng-template #end>
+            <p-button (onClick)="readMore()" label="Read More" text [style]="{width:'100%'}"/>
+        </ng-template>
+    </p-menu>
 </div>

@@ -14,6 +14,8 @@ import { AuthPageModule } from '@shared/auth-page/auth-page.module';
 import { LayoutModule } from '@core/layout/main-layout/layout.module';
 
 import { PrimeNGModule } from '@shared/modules/primeng/primeng.module';
+import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
+import { ProgressTrackComponent } from './components/progress-track/progress-track.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { PrimeNGModule } from '@shared/modules/primeng/primeng.module';
     RegisterComponent,
     PortalLayoutComponent,
     CardSectionComponent,
-    SubjectModalComponent
+    SubjectModalComponent,
+    ProgressBarComponent,
+    ProgressTrackComponent
   ],
   imports: [
     CommonModule,
