@@ -1,12 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
+import { ModalComponent } from './modal/modal.component';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ModalComponent,
+
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    DialogModule
+  ],
+  exports:[
+    ModalComponent
   ]
 })
 export class SharedModule { }

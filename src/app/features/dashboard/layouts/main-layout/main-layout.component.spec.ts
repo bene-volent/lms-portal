@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SubjectModalComponent } from './subject-modal.component';
+import { MainLayoutComponent } from './main-layout.component';
 
-describe('SubjectModalComponent', () => {
-  let component: SubjectModalComponent;
-  let fixture: ComponentFixture<SubjectModalComponent>;
+describe('MainLayoutComponent', () => {
+  let component: MainLayoutComponent;
+  let fixture: ComponentFixture<MainLayoutComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SubjectModalComponent]
+      declarations: [MainLayoutComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SubjectModalComponent);
+    fixture = TestBed.createComponent(MainLayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

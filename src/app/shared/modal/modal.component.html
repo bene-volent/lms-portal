@@ -1,0 +1,9 @@
+<p-dialog [modal]="true" [(visible)]="visible" [style]="{width: 'max(700px,60%)',borderRadius:'1em'}"
+    [breakpoints]="{ '1199px': 'max(500px,60%)', '575px': '90%' }"
+    [maskStyle]="{ 'background-color': 'rgba(0,0,0,0.1)', 'backdropFilter':'blur(1px)' }">
+    <ng-template #headless>
+        <ng-content>
+            Add content to the modal
+        </ng-content>
+    </ng-template>
+</p-dialog>

@@ -1,0 +1,49 @@
+.card-content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    
+    .card-text{
+        flex-shrink: 0;
+        > *{
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    .card-button{
+        align-self: self-end;
+    }
+}
+
+.achievements-container{
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 1.5rem;
+    
+}
+
+.achievement-details-button{
+    background: transparent!important;
+    border: none;
+
+    &:hover{
+        background: transparent!important;
+    }
+}
+
+.modal-content{
+    padding: 1.5rem;
+}
+
+.stats{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    .stats-title{
+        font-size: 1.25rem;
+        font-weight: 600;
+    }
+}

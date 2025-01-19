@@ -3,7 +3,7 @@
         <header style="text-align: center;">
             <h1>Log In</h1>
         </header>
-        <form (ngSubmit)="onSubmit()" [formGroup]="formData" style="display: grid;gap: 2rem;">
+        <form (ngSubmit)="onSubmit()"  [formGroup]="formData" style="display: grid;gap: 2rem;">
             <p-floatLabel>
                 
                 <p-iconfield>
@@ -32,7 +32,7 @@
             <div style="display: flex;gap: 1rem;flex-direction: column;">
                 <p-button type="submit"  fluid label="Submit" />
                 <div class="editional-links">
-                    <p-button  [link]="true" label="Register" routerLink="/register"/>
+                    <p-button  [link]="true" label="Register" routerLink="/auth/register"/>
                     <p-button  [link]="true" label="Forgot Password?" (onClick)="forgotPasswordModalvisible = true"/>
                 </div>
             </div>

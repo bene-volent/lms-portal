@@ -14,6 +14,7 @@ export class RoleGuard implements CanActivate {
     // check if user is user
     if(this.authService.isAuthenticated() && this.authService.getUserRole() === 'user'){
       this.toastService.showWarn('You are not authorized to access this page')
+      
       return false
     }
     return true;

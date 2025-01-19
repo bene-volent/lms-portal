@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
     if (!this.authService.isAuthenticated() ) {
       if (!path.startsWith('login') && !path.startsWith('register')){
         this.toast.showInfo('Please login to access this page');
-        this.router.navigate(['/login']);
+        this.router.navigate(['/auth/login']);
         // console.log(false)
         return false;
       }
@@ -27,9 +27,12 @@ export class AuthGuard implements CanActivate {
       return true
     }
     else{
+
+      const isTeacher = this.authService.getUserRole() === 'teacher';
+      const dashboardURL = isTeacher ? '/teacher/dashboard' : '/dashboard';
       if (path.startsWith('login') || path.startsWith('register')){
         this.toast.showWarn('You are already logged in');
-        this.router.navigate(['/']);
+        this.router.navigate([dashboardURL]);
         // console.log(false)
 
         return false;
@@ -37,7 +40,7 @@ export class AuthGuard implements CanActivate {
 
       if (path.startsWith('admin') && this.authService.getUserRole() === 'user'){
         this.toast.showWarn('You are not authorized to access this page');
-        this.router.navigate(['/']);
+        this.router.navigate([dashboardURL]);
         // console.log(false)
 
         return false;

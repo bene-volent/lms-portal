@@ -9,22 +9,18 @@ import { ToastService } from '@core/services/toast.service';
 export class AlreadyLoggedInGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router, private toast: ToastService) { }
   canActivate(route: ActivatedRouteSnapshot) {
-    const path = route.pathFromRoot.map(r => r.routeConfig?.path).join('/').slice(1); // in case the route is lazy loaded
 
+
+    const path = route.pathFromRoot.map(r => r.routeConfig?.path).join('/').slice(1); // in case the route is lazy loaded
+    console.log(path, this.authService.isAuthenticated(),this.authService.getCurrentUser(),this.authService.getUserRole(),path.startsWith('/login'));  
     if (!this.authService.isAuthenticated()) {
       this.toast.showInfo('Please login to access this page');
-      this.router.navigate(['/login']);
-      return false;
-    }
-
-
-    if (path.startsWith('admin') && this.authService.getUserRole() === 'user') {
-      this.toast.showWarn('You are not authorized to access this page');
-      this.router.navigate(['/']);
+      this.router.navigate(['/auth/login']);
       return false;
     }
 
     return true
+    
 
   }
 

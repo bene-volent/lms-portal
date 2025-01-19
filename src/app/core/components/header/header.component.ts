@@ -40,7 +40,7 @@ export class HeaderComponent {
       type: 'link',
       onClick: () => {
         this.authService.logout();
-        this.router.navigate(['/login']);
+        this.router.navigate(['/auth/login']);
       }
     }
   ]

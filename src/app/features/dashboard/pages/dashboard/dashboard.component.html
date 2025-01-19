@@ -1,0 +1,46 @@
+<div class="" style="max-width: 1150px;margin-inline: auto;display: flex;flex-direction: column;gap: 1.25rem;">
+    <h2>👋 Welcome back, {{getCurrentUser()!.firstName}}!</h2>
+
+    <p>Ready to learn and have fun?</p>
+
+
+    <section>
+        <p-card [header]="continue?'Continue where we left off?':'Coming up next'"
+            [style]="{border:'1px solid black',borderRadius:'0.75rem'}">
+            @if(continue){
+            <div class="card-content">
+
+                <div class="card-text">
+                    <h3>Topic title</h3>
+                    <p><strong class="larger">Content Type</strong>: Reading <span class="larger">📚</span>/ Video <span
+                            class="larger">📹</span></p>
+                    <span><strong class="larger">Time to complete: </strong> 1 hour</span>
+                </div>
+                <p-button class="card-button" label="Continue Reading" />
+
+            </div>
+            }
+        </p-card>
+    </section>
+
+    <section>
+        <h3>Upcoming Tasks 📅</h3>
+        <div class="" style="margin-top: 1rem; display: grid; gap: 1rem;">
+
+            <p-card header="Course Title 1" [style]="{border:'1px solid black',borderRadius:'0.75rem'}">
+                <div class="card-content">
+                    <a routerLink="./" class="larger"><strong>Mock Test</strong></a>
+                    <p>Related Topics: 
+                        <a routerLink="">Topic 1</a> &nbsp;<a routerLink="">Topic 2</a>&nbsp;<a routerLink="">Topic 3</a>  &nbsp;
+                    </p>
+                </div>
+            </p-card>
+            <p-card header="Course Title 2" [style]="{border:'1px solid black',borderRadius:'0.75rem'}">
+                <div class="card-content">
+                    <a routerLink="./" class="larger"><strong>Topic Title: Topic Type</strong></a>
+                    <p><a router-link="">Module title</a> | <a router-link="">Lesson Title</a></p>
+                </div>
+            </p-card>
+        </div>
+    </section>
+</div>

@@ -11,15 +11,13 @@ export class NotLoggedInGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot) {
 
-
-    const path = route.pathFromRoot.map(r => r.routeConfig?.path).join('/').slice(1); // in case the route is lazy loaded
-
-    if (this.authService.isAuthenticated() ) {
-      this.toast.showWarn('You are already logged in');
-      this.router.navigate(['/']);
-      return false
-    }
-    return true
+      // const path = route.pathFromRoot.map(r => r.routeConfig?.path).join('/').slice(1); // in case the route is lazy loaded
+      if (this.authService.isAuthenticated() ) {
+        this.toast.showWarn('You are already logged in');
+        this.router.navigate(['/dashboard']);
+        return false
+      }
+      return true
     
   }
 

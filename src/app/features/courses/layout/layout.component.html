@@ -1,0 +1,98 @@
+<app-main-layout>
+    <div sidebar>
+        <div class="sidebar-header">
+            <h2>{{ (userAsync | async)?.firstName }}</h2>
+            <p>Course Name</p>
+        </div>
+        <nav>
+            <ul>
+                <li class="sidebar-item">
+                    <a [routerLink]="'/courses/'+courseSlug" text class="sidebar-item-button" pButton>
+                        <i pButtonIcon class="pi pi-home"></i>
+                        <span pButtonLabel>Home</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a [routerLink]="'/courses/'+courseSlug+'/handouts'" routerLinkActive="sidebar-item-active" text
+                        class="sidebar-item-button" pButton>
+                        <i pButtonIcon class="pi pi-book"></i>
+                        <span pButtonLabel>Handouts</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a [routerLink]="'/courses/'+courseSlug+'/assignments'" routerLinkActive="sidebar-item-active" text
+                        class="sidebar-item-button" pButton>
+                        <!-- icon="pi pi-pen-to-square" label="Assignments" -->
+                        <i pButtonIcon class="pi pi-pen-to-square"></i>
+                        <span pButtonLabel>Assignments</span>
+
+                    </a>
+                </li>
+                @if(loading){}
+                @else {
+                <li class="sidebar-item">
+
+                    <p-accordion value="0" [style]="{}">
+                        <p-accordion-panel value="0" [style]="{boxShadow: 'none',paddingBottom:0}">
+                            <p-accordion-header [style]="{paddingBlock:'0.625rem', paddingInline:'1rem' }">
+                                <span>
+                                    <i class=""></i>
+                                    <span>Content</span>
+                                </span>
+                            </p-accordion-header>
+                            <p-accordion-content>
+                                @for (module of getModules(); track $index) {
+                                <a [routerLink]="['/courses/'+courseSlug+'/'+module.slug]"
+                                    routerLinkActive="sidebar-item-active" text class="sidebar-item-button"
+                                    [title]="module.title" [style]="{marginInline:'-1rem'}" pButton>
+
+                                    <span pButtonLabel>{{ module.title }}</span>
+                                </a>
+                                }
+                            </p-accordion-content>
+                        </p-accordion-panel>
+                    </p-accordion>
+
+                </li>
+                }
+                <li class="sidebar-item">
+                    <a routerLink="/quizzes" routerLinkActive="sidebar-item-active" text class="sidebar-item-button"
+                        pButton>
+                        <i pButtonIcon>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 24 24"
+                                fill="none">
+                                <path
+                                    d="M12.37 8.88H17.62M6.38 8.88L7.13 9.63L9.38 7.38M12.37 15.88H17.62M6.38 15.88L7.13 16.63L9.38 14.38M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z"
+                                    stroke="#292D32" stroke-width="2.25" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </i>
+                        <span pButtonLabel>Quizzes</span>
+                    </a>
+
+                </li>
+                <p-divider />
+                <li class="sidebar-item">
+
+                    <a routerLink="/blogs" routerLinkActive="sidebar-item-active" text class="sidebar-item-button"
+                        pButton>
+                        <i pButtonIcon class="pi pi-user"></i>
+                        <span pButtonLabel>Blogs</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+
+                    <a routerLink="/messages" routerLinkActive="sidebar-item-active" text class="sidebar-item-button"
+                        pButton>
+                        <i pButtonIcon class="pi pi-envelope"></i>
+                        <span pButtonLabel>Messages</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <main main class="container">
+        <router-outlet></router-outlet>
+    </main>
+
+</app-main-layout>

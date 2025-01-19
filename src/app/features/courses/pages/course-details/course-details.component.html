@@ -1,0 +1,180 @@
+<div class="" style="max-width: 1150px;margin-inline: auto;display: flex;flex-direction: column;gap: 1.25rem;">
+    <!-- <p-carousel #car [value]="slides" [numVisible]="1" [numScroll]="1" circular [showNavigators]="false"
+        [autoplayInterval]="5000">
+        <ng-template let-slide pTemplate="slide">
+            <img [src]="slide.image" (mouseenter)="car.stopAutoplay()" (mouseleave)="car.startAutoplay()"
+                alt="slide.image" style="width:100%;max-width: 100%;margin-inline:auto;border-radius: 0.25rem;" />
+        </ng-template>
+
+    </p-carousel> -->
+    <app-progress-track
+        trackPath="m 74.5,99.5 h 646.71313 a 54.158076,54.158076 45 0 1 54.15808,54.15808 50.376456,50.376456 139.48071 0 1 -54.15808,46.2869 H 124.96845 a 50.468445,50.468445 135 0 0 -50.468445,50.46844 50.4428,50.4428 44.970868 0 0 50.468442,50.41715 H 775.37121" />
+
+    <section>
+        <p-card [header]="continue?'Continue where we left off?':'Coming up next'"
+            [style]="{border:'1px solid black',borderRadius:'0.75rem'}">
+            @if(continue){
+            <div class="card-content">
+
+                <div class="card-text">
+                    <h3>Topic title</h3>
+                    <p><strong class="larger">Content Type</strong>: Reading <span class="larger">📚</span>/ Video <span
+                            class="larger">📹</span></p>
+                    <span><strong class="larger">Time to complete: </strong> 1 hour</span>
+                </div>
+                <p-button class="card-button" label="Continue Reading" />
+
+            </div>
+            }
+        </p-card>
+    </section>
+
+    <section>
+        <h2>
+            Course Achievements
+        </h2>
+        <div class="achievements-container">
+            @for (module of userCourseProgress.modulesProgress; track $index) {
+
+            @let moduleProgress = (module.lessonsCompleted + module.quizzesCompleted) / (module.totalLessons +
+            module.totalQuizzes) * 100;
+            <p-card [style]="{'background':'#d9d9d977'}">
+                <ng-template #title>
+                    <header [style]="{display:'flex',justifyContent:'space-between',alignItems:'center'}">
+                        <h3>{{module.title}}</h3>
+
+                        <p-button [style]="{background:'transparent',border:'none',padding:'0'}"
+                            styleClass="achievement-details-button" title="View Details"
+                            (onClick)="openModuleDetails(module.moduleSlug)">
+                            <ng-template #icon>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29"
+                                    fill="none">
+                                    <path
+                                        d="M11.085 9.65611H19.2881M19.2881 9.65611L19.2881 17.8593M19.2881 9.65611L10.4014 18.5429M6.29978 1.37305L22.7061 1.37305C25.4243 1.37305 27.6279 3.57665 27.6279 6.29492L27.6279 22.7012C27.6279 25.4194 25.4243 27.623 22.7061 27.623L6.29978 27.623C3.58152 27.623 1.37793 25.4194 1.37793 22.7012V6.29492C1.37793 3.57664 3.58152 1.37305 6.29978 1.37305Z"
+                                        stroke="black" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </ng-template>
+
+                        </p-button>
+
+                    </header>
+                </ng-template>
+
+                <ng-template #content>
+
+                    @if(moduleProgress === 0){
+                    <p-progressbar value="100" [style]="{borderRadius:'0.5rem',height:'1.35rem',}" color="#9E9E9E">
+                        <ng-template #content>
+                            Not started
+                        </ng-template>
+                    </p-progressbar>
+
+                    }
+                    @else {
+                    <p-progressbar [value]="50"
+                        [style]="{background:'white',borderRadius:'0.5rem',height:'1.35rem',}" />
+                    }
+                </ng-template>
+
+            </p-card>
+
+
+            }
+        </div>
+    </section>
+
+    <!-- @for (section of sections; track section.title) {
+    <app-card-section [title]="section.title">
+        @for (topic of section.topics; track topic.id) {
+        <p-card [style]="{overflow:'hidden'}">
+            <ng-template #header>
+                <img [src]="topic.thumbnail" [alt]="topic.subject" style="width:100%;" />
+            </ng-template>
+            <ng-template #title>
+                {{topic.subject}}
+            </ng-template>background:'transparent'
+            <ng-template #subtitle>
+                {{topic.topic}}
+            </ng-template>
+            <p>
+                {{topic.description}}
+            </p>
+            <ng-template #footer>
+                <div>
+                    <p-button [disabled]="topic.isEnrolled" [style]="{padding:'0.25rem .5rem'}" link
+                        [label]="!topic.isEnrolled?'Enroll':'Enrolled'" />
+                    <p-button [style]="{padding:'0.25rem .5rem'}" link label="Details" (onClick)="openSubjectModal(topic)" />
+                </div>
+            </ng-template>
+        </p-card>
+        }
+    </app-card-section>
+    } -->
+</div>
+<app-modal [(visible)]="modalVisible">
+    <div class="modal-content">
+        <header [style]="{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:'1rem'}">
+            <h2>Module Details</h2>
+            <p-button icon="pi pi-times" link (onClick)="modalVisible = false" />
+        </header>
+        <main>
+            <section style="border-bottom: 1px solid black; padding-bottom: 0.5rem;">
+                <p class="stats">
+                    <span class="stats-title">Title</span>
+                    <span class="stats-value">{{moduleSelected['title']}}</span>
+                </p>
+                <p class="stats">
+                    <span class="stats-title">Topics Covered</span>
+                    <span class="stats-value"><span class="larger"><strong>5</strong></span> /10</span>
+                </p>
+                <p class="stats">
+                    <span class="stats-title">Topics completed</span>
+                    <span class="stats-value"><span class="larger"><strong>6</strong></span> /10</span>
+                </p>
+            </section>
+            <section style=" margin-top: 1rem;border-bottom: 1px solid black; padding-bottom: 0.5rem;">
+                <h4 style="font-size: 1.35rem;margin-bottom: 0.5rem;font-weight: 500;">Overall Mock Test Results</h4>
+                <p class="stats">
+                    <span class="stats-title">Tests Taken</span>
+                    <span class="stats-value"><span class="larger"><strong>5</strong></span> /10</span>
+                </p>
+                <p class="stats">
+                    <span class="stats-title">Tests Completed</span>
+                    <span class="stats-value"><span class="larger"><strong>5</strong></span> /10</span>
+                </p>
+                <p class="stats">
+                    <span class="stats-title">Accuracy</span>
+                    <span class="stats-value"><span class="larger"><strong>50</strong></span> %</span>
+                </p>
+                <p class="stats">
+                    <span class="stats-title">Average Time</span>
+                    <span class="stats-value"><span class="larger"><strong>45</strong></span> min</span>
+                </p>
+            </section>
+            <section style="margin-top: 1rem;">
+                <h4 style="font-size: 1.35rem;margin-bottom: 0.5rem;font-weight: 500">Mock Test Summary</h4>
+                <p-accordion [value]="0">
+                    <p-accordion-panel [value]="0">
+                        <p-accordion-header>Header I</p-accordion-header>
+                        <p-accordion-content>
+                            
+                        </p-accordion-content>
+                    </p-accordion-panel>
+                    <p-accordion-panel value="1">
+                        <p-accordion-header>Header II</p-accordion-header>
+                        <p-accordion-content>
+                            
+                        </p-accordion-content>
+                    </p-accordion-panel>
+                    <p-accordion-panel value="2">
+                        <p-accordion-header>Header III</p-accordion-header>
+                        <p-accordion-content>
+                            
+                        </p-accordion-content>
+                    </p-accordion-panel>
+                </p-accordion>
+            </section>
+        </main>
+    </div>
+</app-modal>

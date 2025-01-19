@@ -1,0 +1,60 @@
+<div class="" style="max-width: 1150px;margin-inline: auto;display: flex;flex-direction: column;gap: 3rem;">
+    <!-- <p-carousel #car [value]="slides" [numVisible]="1" [numScroll]="1" circular [showNavigators]="false"
+        [autoplayInterval]="5000">
+        <ng-template let-slide pTemplate="slide">
+            <img [src]="slide.image" (mouseenter)="car.stopAutoplay()" (mouseleave)="car.startAutoplay()"
+                alt="slide.image" style="width:100%;max-width: 100%;margin-inline:auto;border-radius: 0.25rem;" />
+        </ng-template>
+
+    </p-carousel> -->
+    <app-progress-track 
+        trackPath="m 74.5,99.5 h 646.71313 a 54.158076,54.158076 45 0 1 54.15808,54.15808 50.376456,50.376456 139.48071 0 1 -54.15808,46.2869 H 124.96845 a 50.468445,50.468445 135 0 0 -50.468445,50.46844 50.4428,50.4428 44.970868 0 0 50.468442,50.41715 H 775.37121"
+ 
+    />
+    
+    <section>
+        <p-card [header]="continue?'Continue where we left off?':'Coming up next'" [style]="{border:'1px solid black',borderRadius:'0.75rem'}">
+            @if(continue){
+                <div class="card-content">
+                    <h3>Topic title</h3>
+                    <p><strong class="larger">Content Type</strong>: Reading <span class="larger">📚</span>/ Video <span class="larger">📹</span></p>
+                    <div>
+                        <span><strong class="larger">Time to complete: </strong> 1 hour</span>
+                        <p-button label="Continue Reading" (onClick)="openSubjectModal(continue)" />
+                    </div>
+                </div>
+            }
+        </p-card>
+    </section>
+
+    <!-- @for (section of sections; track section.title) {
+    <app-card-section [title]="section.title">
+        @for (topic of section.topics; track topic.id) {
+        <p-card [style]="{overflow:'hidden'}">
+            <ng-template #header>
+                <img [src]="topic.thumbnail" [alt]="topic.subject" style="width:100%;" />
+            </ng-template>
+            <ng-template #title>
+                {{topic.subject}}
+            </ng-template>
+            <ng-template #subtitle>
+                {{topic.topic}}
+            </ng-template>
+            <p>
+                {{topic.description}}
+            </p>
+            <ng-template #footer>
+                <div>
+                    <p-button [disabled]="topic.isEnrolled" [style]="{padding:'0.25rem .5rem'}" link
+                        [label]="!topic.isEnrolled?'Enroll':'Enrolled'" />
+                    <p-button [style]="{padding:'0.25rem .5rem'}" link label="Details" (onClick)="openSubjectModal(topic)" />
+                </div>
+            </ng-template>
+        </p-card>
+        }
+    </app-card-section>
+    } -->
+</div>
+<app-modal [(visible)]="modalVisible" >
+
+</app-modal>
